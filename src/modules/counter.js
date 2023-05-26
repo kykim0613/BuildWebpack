@@ -1,33 +1,34 @@
-const SET_DIFT= 'counter/SET_DIFT'
+const SET_DIFF = 'counter/SET_DIFF'
 const INCREASE = 'counter/INCREASE'
 const DECREASE = 'counter/DECREASE'
 
-export const setDift = dift => ({type: SET_DIFT, dift})
-export const increase = () => ({type: INCREASE})
-export const decrease = () => ({type: DECREASE})
+export const setDiff = diff => ({ type: SET_DIFF, diff })
+export const increase = () => ({ type: INCREASE })
+export const decrease = () => ({ type: DECREASE })
 
 const initialState = {
     number: 0,
-    dift: 1
+    diff: 1
 }
 
-export const counter = () => {
-    switch(action.type){
-        case SET_DIFT:
+export default function counter(state = initialState, action) {
+    switch (action.type) {
+        case SET_DIFF:
             return {
-                ...State,
-                dift: action.dift
+                ...state,
+                diff: action.diff
             }
         case INCREASE:
             return {
-                ...State,
-                number: state.number + state.dift
+                ...state,
+                number: state.number + state.diff
             }
         case DECREASE:
             return {
                 ...state,
-                number: state.number - state.dift
+                number: state.number - state.diff
             }
-        default: return state
+        default:
+            return state
     }
 }

@@ -1,35 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { createStore } from 'react-redux';
-
-const initialState = {
-    counter: 0,
-    text: '',
-    list: []
-}
-
-const INCREASE = 'INCREASE'
-const DECREASE = 'DECREASE'
-const CHANGE_TEXT = 'CHANGE_TEXT'
-const ADD_TO_LIST = 'ADD_TO_LIST'
-
-const increase = () => ({
-    type: INCREASE
-}
-)
-const decrease = () => ({
-    type: DECREASE
-})
-
-const changeText = text => ({
-    type: CHANGE_TEXT,
-    text
-})
-
-const addToList = item => ({
-    type: ADD_TO_LIST,
-    item
-})
+import { Link } from "react-router-dom";
 
 const Main = () => {
     const [users, setUsers] = useState(null);
@@ -77,6 +48,7 @@ const Main = () => {
                 <></>
             )
             }
+            <Link to={"/counter"}>counter</Link>
         </>
     )
 }
