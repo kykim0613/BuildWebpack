@@ -1,4 +1,4 @@
-import { createStore } from 'react-redux';
+import { createStore } from 'redux';
 
 const initialState = {
     counter: 0,
@@ -40,9 +40,14 @@ const reducer = (state = initialState, action) => {
         case DECREASE:
             return {
                 ...state,
-                counter: stata.counter - 1
+                counter: state.counter - 1
             }
         case CHANGE_TEXT:
+            return {
+                ...state,
+                text: action.text
+            }
+        case ADD_TO_LIST:
             return {
                 ...state,
                 list: state.list.concat(action.item)
@@ -55,3 +60,15 @@ const reducer = (state = initialState, action) => {
 const store = createStore(reducer);
 
 console.log(store.getState())
+
+const listener = () => {
+    const state = store.getState()
+    console.log(state)
+}
+
+const unsubscribe = store.subscribe(listener)
+
+store.dispatch(increase())
+store.dispatch(decrease())
+store.dispatch(changeText('안녕하세요'))
+store.dispatch(addToList({id: 1, text: 'wow'}))
